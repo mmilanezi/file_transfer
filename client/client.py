@@ -22,6 +22,7 @@ def check_pending_files(client):
     json_msg = json.dumps(msg_data)
     client.send(json_msg.encode())
     # Continuar daqui --------------------------------------------------------------------------------------------------------------
+    
     # Aguardar resposta do servidor por alguns segundos
     try:
         file_status = client.recv(1024).decode()
