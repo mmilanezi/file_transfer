@@ -63,9 +63,11 @@ def handle_client(client_socket, client_id):
                         while True:
                             file_data = client_socket.recv(1024)
                             print(f'Conteudo: {file_data}')
-                            if not file_data or file_data == b'ARQUIVO_FINALIZADO':
+                            # if not file_data or file_data == b'ARQUIVO_FINALIZADO':
+                            if not file_data:
                                 break
                             file.write(file_data)
+                            break
                                      
                     print(f"Arquivo recebido e armazenado em {file_path}")
                     client_socket.send(f"Arquivo recebido com sucesso, enviando ao destinatário ID:{dest_id} Nome: {file_name}".encode())
@@ -149,3 +151,4 @@ while True:
     client_handler.start()
     client_id_counter += 1
     print(f"Servidor ouvindo em {host}:{port}")
+    

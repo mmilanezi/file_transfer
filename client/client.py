@@ -16,6 +16,9 @@ print(welcome_msg)
 
 def check_pending_files(client):
     # Enviar solicitação ao servidor para verificar arquivos pendentes
+    client_msg = client.recv(1024).decode()
+    print(f'Resposta do cliente: {client_msg}')
+    
     msg_data = {
         "operation": "2",  # Operação para verificar arquivos pendentes
     }
@@ -100,20 +103,21 @@ while True:
                     if not file_data:
                         break
                     client.send(file_data)
-                    client.send("ARQUIVO_FINALIZADO".encode())
                     
-                m_server = client.recv(1024).decode()
-                print(f'Mensagem do servidor: {m_server}')
+                    # client.send("ARQUIVO_FINALIZADO".encode())
+                            
+                    m_server = client.recv(1024).decode()
+                    print(f'Mensagem do servidor: {m_server}')
                 
             
-                m_server = client.recv(1024).decode()
-                print(f'Mensagem do servidor: {m_server}')
-                m_server = client.recv(1024).decode()
-                print(f'Mensagem do servidor: {m_server}')
-                m_server = client.recv(1024).decode()
-                print(f'Mensagem do servidor: {m_server}')
-                m_server = client.recv(1024).decode()
-                print(f'Mensagem do servidor: {m_server}')
+                # m_server = client.recv(1024).decode()
+                # print(f'Mensagem do servidor: {m_server}')
+                # m_server = client.recv(1024).decode()
+                # print(f'Mensagem do servidor: {m_server}')
+                # m_server = client.recv(1024).decode()
+                # print(f'Mensagem do servidor: {m_server}')
+                # m_server = client.recv(1024).decode()
+                # print(f'Mensagem do servidor: {m_server}')
 
                 
                 
