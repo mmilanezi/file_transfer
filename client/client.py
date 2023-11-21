@@ -12,13 +12,14 @@ def main():
         client.connect((IP, PORT))
     except:
         return print('\nNão foi possívvel se conectar ao servidor!\n')
-
     username = input('Usuário> ')
-    print('\nConectado')
+    print(username)
+    print('\nConectado ao servidor')
 
     thread1 = threading.Thread(target=receiveMessages, args=[client])
     thread2 = threading.Thread(target=sendMessages, args=[client, username])
 
+    
     thread1.start()
     thread2.start()
 
