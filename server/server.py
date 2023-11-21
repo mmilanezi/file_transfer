@@ -19,6 +19,8 @@ def main():
     while True:
         client, addr = server.accept()
         clients.append(client)
+        
+        print(f'Clientes online: {clients}')
 
         thread = threading.Thread(target=messagesTreatment, args=[client])
         thread.start()
